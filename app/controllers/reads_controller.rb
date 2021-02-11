@@ -10,4 +10,10 @@ class ReadsController < ApplicationController
       redirect_to @announcements
     end
   end
+  
+  private
+
+  def read_parameters
+    params.require(:reads).permit(:announcement_id, current_user.id)
+  end
 end

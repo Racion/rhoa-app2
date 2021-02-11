@@ -10,7 +10,7 @@ class AnnouncementsController < ApplicationController
   end
 
   def index
-    @announcements = Announcement.where('expiration >= ?',Date.current)
+    @announcements = Announcement.where('expiration >= ?', Date.current)
   end
 
   def create

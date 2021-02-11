@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= @announcements.each do |announcement| %>
+        <% @announcements.each do |announcement| %>
           <tr>
             <td><%= announcement.announcement %></td>
             <td><%= announcement.expiration %></td>
