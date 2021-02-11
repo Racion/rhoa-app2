@@ -1,0 +1,38 @@
+<div class="container">
+  <h3>User: <%= "#{current_user.first_name} #{current_user.last_name}" %></h3>
+  <h4>Your Announcements</h4>
+  <div class="container table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Announcement</th>
+          <th>Expiration</th>
+          <th>User</th>
+          <th>Read</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= @announcements.each do |announcement| %>
+          <tr>
+            <td><%= announcement.announcement %></td>
+            <td><%= announcement.expiration %></td>
+            <td>
+              <%= "#{announcement.user.first_name} #{announcement.user.last_name}" %>
+            </td>
+            <td>
+              <% if @read == nil %>
+                <%= form_with(model: @read, local: true) do |f| %>
+                  <%= f.hidden_field :announcement_id, :value => :announcement_id %>
+                  <%= f.hidden_field :user_id, :value => current_user.id %>
+                  <%= f.submit 'Mark as Read', class: 'btn btn-danger' %>
+                <% end %>
+              <% else %>
+                Already Read
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
