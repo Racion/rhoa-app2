@@ -3,6 +3,7 @@ class AnnouncementsController < ApplicationController
 
   def show
     @announcement = Announcement.find(params[:id])
+    @read = Read.where
   end
 
   def new
@@ -16,7 +17,7 @@ class AnnouncementsController < ApplicationController
   def create
     @announcement = current_user.announcements.build(announcement_params)
     if @announcement.save
-      redirect_to @announcements
+      redirect_to '/announcements'
     else
       render 'new'
     end

@@ -4,5 +4,4 @@ class Announcement < ApplicationRecord
   validates :announcement, presence: true, length: { maximum: 140 }
   validates :expiration, presence: true
   has_many :reads
-  has_many :users, through: :reads
 end
